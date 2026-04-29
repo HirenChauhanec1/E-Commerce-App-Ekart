@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.shopping.fragment.UserAccountFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvProfilePic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#FA450D"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivProfilePic"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:layout_constraintEnd_toEndOf="@id/cvProfilePic"
+            app:layout_constraintBottom_toBottomOf="@id/cvProfilePic"
+            app:cardCornerRadius="20dp"
+            android:layout_width="30dp"
+            android:backgroundTint="@color/cart_img_bg_color"
+            android:layout_height="30dp">
+
+            <ImageView
+                android:id="@+id/ivEditProfilePic"
+                android:layout_margin="5dp"
+                android:src="@drawable/baseline_edit_24"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tint="@color/white" />
+        </androidx.cardview.widget.CardView>
+        <EditText
+            android:id="@+id/etFirstName"
+            android:layout_marginTop="40dp"
+            android:autofillHints="name"
+            android:hint="@string/first_name"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/cvProfilePic"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v_0.04"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_v_0.96"
+            style="@style/editText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/editTextHeight"/>
+        <EditText
+            android:id="@+id/etLastName"
+            android:layout_marginTop="15dp"
+            android:hint="@string/last_name"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/etFirstName"
+            app:layout_constraintStart_toStartOf="@+id/guideline_v_0.04"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_v_0.96"
+            style="@style/editText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/editTextHeight"/>
+
+        <TextView
+            android:id="@+id/tvForgetChangePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/forget_change_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintTop_toBottomOf="@id/btnSave" />
+
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnSave"
+            style="@style/blueButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintTop_toBottomOf="@id/etLastName" />
+        <ProgressBar
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvForgetChangePassword" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_0.04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_0.96"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

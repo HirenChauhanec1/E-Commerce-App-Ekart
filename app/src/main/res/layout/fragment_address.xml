@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.shopping.fragment.AddressFragment">
+
+    <EditText
+        android:id="@+id/etAddressLocation"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginTop="80dp"
+        android:gravity="center_vertical"
+        android:hint="@string/address_location_ex_home"
+        android:inputType="text"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_0.96"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_0.04"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/full_name"
+        android:inputType="text"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_0.96"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_0.04"
+        app:layout_constraintTop_toBottomOf="@+id/etAddressLocation" />
+
+    <EditText
+        android:id="@+id/etStreet"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/street"
+        android:inputType="text"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_0.96"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_0.04"
+        app:layout_constraintTop_toBottomOf="@+id/etFullName" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:hint="@string/phone"
+        android:inputType="number"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_v_0.96"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_0.04"
+        app:layout_constraintTop_toBottomOf="@+id/etStreet" />
+
+    <EditText
+        android:id="@+id/etCity"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical"
+        android:hint="@string/city"
+        android:inputType="text"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/etState"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+        app:layout_constraintTop_toBottomOf="@+id/etPhone" />
+
+    <EditText
+        android:id="@+id/etState"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginStart="5dp"
+        android:gravity="center_vertical"
+        android:hint="@string/state"
+        android:inputType="text"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/etCity"
+        app:layout_constraintTop_toTopOf="@id/etCity" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancel"
+        style="@style/whiteBtnStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+        app:layout_constraintTop_toBottomOf="@+id/etCity" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        style="@style/blueButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:layout_marginStart="5dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnCancel"
+        app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_0.04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_0.96"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+    <ProgressBar
+        android:id="@+id/pb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.shopping.fragment.BillingFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvPaymentMethods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textStyle="bold"
+            style="@style/h3"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            android:text="@string/payments_methods" />
+        <TextView
+            android:id="@+id/tvPaymentOnDelivery"
+            android:text="@string/furnikart_dose_not_support_virtual_payments_you_can_pay_when_you_receive_your_order"
+            style="@style/h2"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            app:layout_constraintStart_toStartOf="@id/tvPaymentMethods"
+            app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <View
+            android:id="@+id/vLine"
+            app:layout_constraintTop_toBottomOf="@id/tvPaymentOnDelivery"
+            android:background="@color/g_gray700"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/tvAddress"
+            android:text="@string/shopping_address"
+            app:drawableStartCompat="@drawable/baseline_location_on_24"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintTop_toBottomOf="@id/vLine"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/ivAddAddress"
+            android:src="@drawable/baseline_add_24"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            app:layout_constraintTop_toTopOf="@id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAddress"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress"
+            app:layout_constraintStart_toStartOf="@id/tvAddress"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/address_rv_item"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <View
+            android:id="@+id/vLine2"
+            app:layout_constraintTop_toBottomOf="@id/rvAddress"
+            android:background="@color/g_gray700"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvOrderedProducts"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintTop_toBottomOf="@+id/vLine2"
+            tools:listitem="@layout/orders_details_rv_item" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/totalPriceContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            app:layout_constraintTop_toBottomOf="@+id/rvOrderedProducts"
+            android:background="@drawable/total_price_container_bg">
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/poppins_black"
+                android:text="@string/total"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/poppins_black"
+                android:text="₹ 0"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ProgressBar
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnPlaceOrder"
+            style="@style/blueButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/place_order"
+            app:layout_constraintTop_toBottomOf="@id/totalPriceContainer"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_0.96"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_0.04" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_0.04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_0.96"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/emptyConstraintLayout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/ivEmptyCartTexture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_empty_box_texture"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivEmptyCartBGBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_empty_box"
+                android:background="@drawable/empty_box_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:text="@string/no_item_in_yout_cart"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivEmptyCartTexture"
+                android:layout_marginTop="20dp"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopping_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.bottomNavFragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.bottomNavFragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.bottomNavFragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_userAccountFragment"
+            app:destination="@id/userAccountFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.bottomNavFragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+        <argument
+            android:name="product"
+            app:argType="com.codewithhiren.ekart.model.Product" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_productDetailsFragment4"
+        app:destination="@id/productDetailsFragment" />
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.BillingFragment"
+        android:label="fragment_billing"
+        tools:layout="@layout/fragment_billing" >
+        <action
+            android:id="@+id/action_billingFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/userAccountFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.UserAccountFragment"
+        android:label="fragment_user_account"
+        tools:layout="@layout/fragment_user_account" >
+        <argument
+            android:name="User"
+            app:argType="com.codewithhiren.ekart.model.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_ordersFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.codewithhiren.ekart.ui.shopping.fragment.OrderDetailsFragment"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" >
+        <argument
+            android:name="order"
+            app:argType="com.codewithhiren.ekart.model.Order" />
+    </fragment>
+    <action android:id="@+id/action_global_billingFragment" app:destination="@id/billingFragment"/>
+</navigation>

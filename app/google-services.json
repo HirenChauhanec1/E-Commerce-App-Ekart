@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "598526877342",
+    "project_id": "furnikart-5b96d",
+    "storage_bucket": "furnikart-5b96d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598526877342:android:158d5098cc0593d427658f",
+        "android_client_info": {
+          "package_name": "com.codewithhiren.ekart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDKLbokDTCz7pScbQ9e_T8KKxSdSLJiYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598526877342:android:fe6c84468adea7ae27658f",
+        "android_client_info": {
+          "package_name": "com.codewithhiren.furnikart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDKLbokDTCz7pScbQ9e_T8KKxSdSLJiYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

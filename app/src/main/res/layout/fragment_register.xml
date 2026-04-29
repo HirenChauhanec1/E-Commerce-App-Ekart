@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.fragment.RegisterFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/bg_image"
+        android:scaleType="fitXY"
+        android:src="@drawable/blury_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+            <TextView
+                android:id="@+id/tv_ekart"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:drawablePadding="6dp"
+                android:text="@string/ekart"
+                android:textStyle="bold"
+                app:drawableLeftCompat="@drawable/ic_kleine_shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_lets_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/let_s_register"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@+id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ekart" />
+
+            <TextView
+                android:id="@+id/tv_account_login"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/do_you_have_an_account_login"
+                app:layout_constraintEnd_toStartOf="@+id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@+id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lets_register" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_first_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editTextHeight"
+                android:layout_marginTop="44dp"
+                app:layout_constraintEnd_toStartOf="@+id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@+id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/tv_account_login">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="name"
+                    android:hint="@string/first_name"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_last_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editTextHeight"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@+id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/et_first_name">
+                <EditText
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    style="@style/editText"
+                    android:hint="@string/last_name"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_email"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editTextHeight"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="@id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/et_last_name">
+                <EditText
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    style="@style/editText"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editTextHeight"
+                android:layout_marginTop="15dp"
+                app:passwordToggleEnabled="true"
+                app:layout_constraintEnd_toEndOf="@id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/et_email">
+                <EditText
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    style="@style/editText"
+                    android:hint="@string/password"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/btn_register"
+                style="@style/blueButtonStyle"
+                app:spinning_bar_color="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/medianBtnHeight"
+                android:layout_marginTop="15dp"
+                android:text="@string/register"
+                app:layout_constraintEnd_toEndOf="@id/gl_ver_0.91"
+                app:layout_constraintStart_toStartOf="@id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+            <ImageView
+                android:id="@+id/iv_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/facebook_login"
+                app:layout_constraintStart_toStartOf="@id/gl_ver_0.09"
+                app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+
+            <TextView
+                android:id="@+id/tv_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/facebook"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_fb"
+                app:layout_constraintEnd_toEndOf="@+id/iv_fb"
+                app:layout_constraintStart_toStartOf="@+id/iv_fb"
+                app:layout_constraintTop_toTopOf="@+id/iv_fb" />
+
+            <ImageView
+                android:id="@+id/iv_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/google_login"
+                app:layout_constraintEnd_toEndOf="@+id/gl_ver_0.91"
+                app:layout_constraintTop_toTopOf="@+id/iv_fb" />
+
+            <TextView
+                android:id="@+id/tv_gooole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/google"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_google"
+                app:layout_constraintEnd_toEndOf="@+id/iv_google"
+                app:layout_constraintStart_toStartOf="@+id/iv_google"
+                app:layout_constraintTop_toTopOf="@+id/iv_google" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_ver_0.09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.09" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_ver_0.91"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.91" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
