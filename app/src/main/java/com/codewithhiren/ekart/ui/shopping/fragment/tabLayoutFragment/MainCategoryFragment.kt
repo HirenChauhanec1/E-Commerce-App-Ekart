@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codewithhiren.ekart.databinding.FragmentMainCategoryBinding
 import com.codewithhiren.ekart.ui.shopping.adapter.BestDealsProductAdapter
 import com.codewithhiren.ekart.ui.shopping.adapter.BestProductsAdapter
 import com.codewithhiren.ekart.ui.shopping.adapter.SpecialProductAdapter
-import com.codewithhiren.ekart.ui.shopping.viewmodel.MainCategoryViewmodel
+import com.codewithhiren.ekart.ui.shopping.viewmodel.CategoryViewModel
 import com.codewithhiren.ekart.utils.setRecyclerViewData
 import com.codewithhiren.ekart.utils.showBottomNav
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +24,7 @@ class MainCategoryFragment : Fragment() {
     private var _binding: FragmentMainCategoryBinding? = null
     private val binding get() = _binding!!
 
-    private val mainCategoryViewmodel: MainCategoryViewmodel by viewModels()
+    private val categoryViewmodel : CategoryViewModel by activityViewModels()
 
     @Inject
     lateinit var bestProductsAdapter: BestProductsAdapter
@@ -56,7 +56,7 @@ class MainCategoryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
                 setRecyclerViewData(
                     lifeCycleOwner = this@MainCategoryFragment.viewLifecycleOwner,
-                    products = mainCategoryViewmodel.specialProducts,
+                    products = categoryViewmodel.specialProducts,
                     adapter = specialProductAdapter,
                     progressBar = pbBestProducts
                 )
@@ -66,7 +66,7 @@ class MainCategoryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
                 setRecyclerViewData(
                     lifeCycleOwner = this@MainCategoryFragment.viewLifecycleOwner,
-                    products = mainCategoryViewmodel.bestDealsProducts,
+                    products = categoryViewmodel.bestDealsProducts,
                     adapter = bestDealsProductAdapter,
                     progressBar = pbBestProducts
                 )
@@ -75,7 +75,7 @@ class MainCategoryFragment : Fragment() {
                 layoutManager = GridLayoutManager(requireContext(),2)
                 setRecyclerViewData(
                     lifeCycleOwner = this@MainCategoryFragment.viewLifecycleOwner,
-                    products = mainCategoryViewmodel.bestProducts,
+                    products = categoryViewmodel.bestProducts,
                     adapter = bestProductsAdapter,
                     progressBar = pbBestProducts
                 )

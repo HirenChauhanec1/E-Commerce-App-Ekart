@@ -23,7 +23,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -274,47 +273,21 @@ class ShoppingRepoImpl @Inject constructor(
         }.flowOn(dispatcherIO)
 
     override fun changeUserProfile(user: User, userPic: Uri?): Flow<NetworkResponse<String>> =
-        callbackFlow {
-            trySend(NetworkResponse.Loading())
-
-            if (userPic == null) {
-                trySend(changeProfile(user))
-            } else {
-                storageReference.putFile(userPic)
-                    .addOnSuccessListener {
-                        storageReference.downloadUrl
-                            .addOnSuccessListener {
-                                launch(dispatcherIO) {
-                                    trySend(changeProfile(user.copy(imagePath = it.toString())))
-                                }
-                            }
-                            .addOnFailureListener {
-                                trySend(NetworkResponse.Error("Your profile is not changed"))
-                            }
-                    }
-                    .addOnFailureListener {
-                        trySend(NetworkResponse.Error("Your profile is not changed"))
-                    }
-            }
-            awaitClose()
-        }
-    /*fun changeUserProfile2(user: User, userPic: Uri?): Flow<NetworkResponse<String>> =
         flow {
             emit(NetworkResponse.Loading())
 
-            if (userPic == null) {
+            if (userPic == null)
                 emit(changeProfile(user))
-            } else {
+            else {
                 try {
                     storageReference.putFile(userPic).await()
-                    storageReference.downloadUrl.await()
-                    emit(changeProfile(user.copy(imagePath = userPic.toString())))
-
+                    val imageUri = storageReference.downloadUrl.await()
+                    emit(changeProfile(user.copy(imagePath = imageUri.toString())))
                 } catch (_: Exception) {
                     emit(NetworkResponse.Error("Your profile is not changed"))
                 }
             }
-        }*/
+        }
 
     private suspend fun changeProfile(user: User): NetworkResponse<String> {
         return if (authRepo.saveRegisteredUsers(user))
@@ -324,21 +297,25 @@ class ShoppingRepoImpl @Inject constructor(
     }
 
     override fun getUserOrders(): Flow<NetworkResponse<List<Order>>> =
-        callbackFlow {
-            trySend(NetworkResponse.Loading())
-            fireStore.collection(FireStoreCollection.User.name).document(auth.uid!!)
-                .collection(UserSubCollection.Orders.name).get()
-                .addOnSuccessListener {
-                    val userOrders = mutableListOf<Order>()
-                    it.documents.forEach { documentSnapshot ->
-                        userOrders.add(documentSnapshot.toObject(Order::class.java)!!)
-                    }
-                    trySend(NetworkResponse.Success(userOrders))
+        flow {
+            emit(NetworkResponse.Loading())
+            try {
+                val querySnapshot = fireStore
+                    .collection(FireStoreCollection.User.name)
+                    .document(auth.uid!!)
+                    .collection(UserSubCollection.Orders.name)
+                    .get()
+                    .await()
+
+                val userOrders = mutableListOf<Order>()
+                querySnapshot.documents.forEach { documentSnapshot ->
+                    userOrders.add(documentSnapshot.toObject(Order::class.java)!!)
                 }
-                .addOnFailureListener {
-                    trySend(NetworkResponse.Error(it.localizedMessage ?: "Something went wrong!!"))
-                }
-            awaitClose()
+                emit(NetworkResponse.Success(userOrders))
+
+            } catch (e: Exception) {
+                emit(NetworkResponse.Error(e.localizedMessage ?: "Something went wrong!!"))
+            }
         }
 }
 

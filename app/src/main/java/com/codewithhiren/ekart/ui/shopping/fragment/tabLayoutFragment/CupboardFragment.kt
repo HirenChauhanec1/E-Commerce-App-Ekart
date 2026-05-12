@@ -1,17 +1,18 @@
 package com.codewithhiren.ekart.ui.shopping.fragment.tabLayoutFragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codewithhiren.ekart.databinding.FragmentCupboardBinding
 import com.codewithhiren.ekart.ui.shopping.adapter.BestProductsAdapter
 import com.codewithhiren.ekart.ui.shopping.adapter.SpecialProductAdapter
-import com.codewithhiren.ekart.ui.shopping.viewmodel.CupboardViewmodel
+import com.codewithhiren.ekart.ui.shopping.viewmodel.CategoryViewModel
 import com.codewithhiren.ekart.utils.setRecyclerViewData
 import com.codewithhiren.ekart.utils.showBottomNav
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,12 +24,17 @@ class CupboardFragment : Fragment() {
     private var _binding: FragmentCupboardBinding? = null
     private val binding get() = _binding!!
 
-    private val cupboardViewmodel: CupboardViewmodel by viewModels()
+    private val categoryViewModel : CategoryViewModel by activityViewModels()
 
     @Inject
     lateinit var specialProductAdapter : SpecialProductAdapter
     @Inject
     lateinit var bestProductsAdapter : BestProductsAdapter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        categoryViewModel.getCupboardProducts()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +57,7 @@ class CupboardFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
                 setRecyclerViewData(
                     lifeCycleOwner = this@CupboardFragment.viewLifecycleOwner,
-                    products = cupboardViewmodel.cupboardProducts,
+                    products = categoryViewModel.cupboardProducts,
                     adapter = specialProductAdapter,
                     progressBar = pb
                 )
@@ -60,7 +66,7 @@ class CupboardFragment : Fragment() {
                 layoutManager = GridLayoutManager(requireContext(),2)
                 setRecyclerViewData(
                     lifeCycleOwner = this@CupboardFragment.viewLifecycleOwner,
-                    products = cupboardViewmodel.bestDealsCupboardProducts,
+                    products = categoryViewModel.bestDealsCupboardProducts,
                     adapter = bestProductsAdapter,
                     progressBar = pb
                 )
